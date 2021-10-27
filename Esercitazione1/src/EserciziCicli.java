@@ -8,10 +8,18 @@ public class EserciziCicli {
 		boolean flag = true;
 		Scanner obj = new Scanner(System.in);
 		System.out.println("Inserisci un numero a scelta di interi, inserisci uno 0 quando hai terminato");
+		while (!obj.hasNextInt()) {
+			System.out.println("Non è un intero!");
+			obj.next();
+		}
 		int n = obj.nextInt();
 		while (n != 0) {
 			if (n < 0 || n % 2 != 0) {
 				flag = false;
+			}
+			while (!obj.hasNextInt()) {
+				System.out.println("Non è un intero!");
+				obj.next();
 			}
 			n = obj.nextInt();
 		}
@@ -29,9 +37,17 @@ public class EserciziCicli {
 		int media = 0;
 		Scanner obj = new Scanner(System.in);
 		System.out.println("Inserisci un numero a scelta di interi, inserisci uno 0 quando hai terminato");
+		while (!obj.hasNextInt()) {
+			System.out.println("Non è un intero!");
+			obj.next();
+		}
 		int n = obj.nextInt();
 		while (n != 0) {
 			if (n % 3 == 0) { i++; media += n;}
+			while (!obj.hasNextInt()) {
+				System.out.println("Non è un intero!");
+				obj.next();
+			}
 			n = obj.nextInt();
 		}
 		System.out.println((float) media/i);
@@ -43,6 +59,10 @@ public class EserciziCicli {
 		Scanner obj = new Scanner(System.in);
 		for (int j = 0; j < 5; j++) {
 			System.out.println("Quanti caratteri vuoi inserire?");
+			while (!obj.hasNextInt()) {
+				System.out.println("Non è un intero!");
+				obj.next();
+			}
 			int numberOfChars = obj.nextInt();
 			for (int i = 0; i < numberOfChars; i++) {
 				System.out.println("Digita il carattere #" + (i + 1));
