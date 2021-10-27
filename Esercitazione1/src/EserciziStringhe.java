@@ -25,12 +25,13 @@ public class EserciziStringhe {
 	// data una sequenza di stringhe calcola la lunghezza della concatenazione delle stringe che iniziano con una maiuscola
 	static void stringEs3(String[] s) {
 		int length = 0;
-		int i = 0;
-		while(!(s[i].isEmpty())) {
-			if(Character.isUpperCase(s[i].charAt(0))) {
-				length += s[i].length();;
+		for (int i = 0; i < (s.length - 1); i++) {
+			if (!(s[i] == null) && s[i] instanceof String && Character.isUpperCase(s[i].charAt(0))) {
+				length += s[i].length();
 			}
-			i++;
+		}
+		if (!(s[s.length - 1].isEmpty())) {
+			System.out.println("La sequenza non si è conclusa con la stringa vuota");
 		}
 		System.out.println(length);
 	}
@@ -42,7 +43,7 @@ public class EserciziStringhe {
 		System.out.println("\n");
 		stringEs2(s);
 		System.out.println("\n");
-		String[] strings = new String[] {"Albero", "foglia", "Radici", "Ramo", "fiore", ""};
+		String[] strings = new String[] {"Albero", "foglia", null, "Radici", "Ramo", "fiore", ""};
 		stringEs3(strings);
 	}
 }
