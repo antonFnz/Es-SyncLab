@@ -6,6 +6,10 @@ public class Test3 {
 		
 		Scanner obj = new Scanner(System.in);
 		System.out.println("Inserisci un numero intero:");
+		while (!obj.hasNextInt()) {
+			System.out.println("L'input non è un intero, riprovare.");
+			obj.next();
+		}
 		int n = obj.nextInt();
 		
 		Quadrato q = new Quadrato();
