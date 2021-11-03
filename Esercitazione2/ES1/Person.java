@@ -49,6 +49,10 @@ public class Person {
 	}
 	
 	public String bornYear(String taxCode) {
+		if (taxCode == null || taxCode.length() < 16) {
+			System.out.println("Inserimento codice fiscale invalido, riprovare l'inserimento");
+			return "0";
+		}
 		// per semplicità ignoro il caso di stagisti nati dopo il 2000, nel qual caso userei un controllo sulla stringa presa dal codice fiscale
 		return "19" + taxCode.substring(6, 8);
 	}
