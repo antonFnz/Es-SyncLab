@@ -72,6 +72,8 @@ public class Main {
 			throw new CreditoInsufficiente("Credito sulla carta insufficiente");
 		} else {
 			System.out.println("Acquisto effettuato! erogazione dalla colonna " + (colonna + 1));
+			colonne.get(colonna).aggiornaColonna(distributore.get(key), colonne.get(colonna).lattineDisponibili() - 1);
+			System.out.println("Lattine rimaste nella colonna: " + colonne.get(colonna).lattineDisponibili());
 			carteCredito.get(codice).caricaTessera(- distributore.get(key).getPrice());
 			System.out.println("Nuovo credito: " + carteCredito.get(codice).leggiCredito());
 		}
