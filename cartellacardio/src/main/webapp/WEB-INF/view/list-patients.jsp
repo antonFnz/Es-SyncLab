@@ -13,9 +13,31 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<h2>Pazienti in gestione</h2>
+			<h2>Pazienti</h2>
 		</div>
 	</div>
+	
+	<!--  insert table here -->
+			<table>
+				<tr>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Sesso</th>
+					<th>Fumatore</th>
+					<th>Diabetico</th>
+				<tr>
+				
+				<!--  looping display of each user -->
+				<c:forEach var="tmpPatient" items="${patients}">
+					<tr>
+						<td> ${tmpPatient.user.name} </td>
+						<td> ${tmpPatient.user.surname} </td>
+						<td> ${tmpPatient.gender} </td>
+						<td> ${tmpPatient.smoker} </td>
+						<td> ${tmpPatient.diabetic} </td>
+					</tr>
+				</c:forEach>
+			</table>
 	
 	<p>
 			<a href="${pageContext.request.contextPath}">Torna alla Home Page</a>

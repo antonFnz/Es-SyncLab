@@ -17,7 +17,7 @@ public class Medic {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idmedico")
-	private int idmedico;
+	private int idmedic;
 	
 	@Column(name="specializzazione")
 	private String special;
@@ -35,18 +35,18 @@ public class Medic {
 
 	public Medic(int idmedico, String special, String hospital, User user) {
 		super();
-		this.idmedico = idmedico;
+		this.idmedic = idmedico;
 		this.special = special;
 		this.hospital = hospital;
 		this.user = user;
 	}
 
 	public int getIdmedico() {
-		return idmedico;
+		return idmedic;
 	}
 
 	public void setIdmedico(int idmedico) {
-		this.idmedico = idmedico;
+		this.idmedic = idmedico;
 	}
 
 	public String getSpecial() {
@@ -75,7 +75,7 @@ public class Medic {
 
 	@Override
 	public String toString() {
-		return "Medic [idmedico=" + idmedico + ", special=" + special + ", hospital=" + hospital + ", user=" + user
+		return "Medic [idmedico=" + idmedic + ", special=" + special + ", hospital=" + hospital + ", user=" + user
 				+ "]";
 	}
 

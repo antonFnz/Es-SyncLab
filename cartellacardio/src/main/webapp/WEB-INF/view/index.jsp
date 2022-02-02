@@ -56,8 +56,12 @@
 	
 	<hr>
 		
+		<c:url var="cartellaPersonale" value="/patient/personal">
+			<c:param name="userId" value="1" />
+		</c:url>
+		
 		<p>
-			<a href="${pageContext.request.contextPath}/patient/personal">Cartella Personale</a>
+			<a href="${cartellaPersonale}">Cartella Personale</a>
 		</p>
 	
 	<hr>
