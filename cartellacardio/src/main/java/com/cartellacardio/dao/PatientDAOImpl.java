@@ -29,7 +29,7 @@ public class PatientDAOImpl implements PatientDAO {
 		return patientList;
 	}
 	
-	// get one user by its id
+	// get one patient by its id
 	@Override
 	public Patient getPatients(int id) {
 		Session currentSession = sessionFactory.getCurrentSession();

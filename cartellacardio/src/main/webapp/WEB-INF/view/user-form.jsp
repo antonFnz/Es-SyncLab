@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+	<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	
 	<div id="wrapper">
 		<div id="header">
 			<h2>Registered Users List</h2>

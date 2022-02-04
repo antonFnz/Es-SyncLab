@@ -55,10 +55,10 @@
 	<security:authorize access="hasAuthority('PAZIENTE')">
 	
 	<hr>
-		
-		<c:url var="cartellaPersonale" value="/patient/personal">
-			<c:param name="userId" value="1" />
-		</c:url>
+	
+	<c:url var="cartellaPersonale" value="/patient/personal">
+			<c:param name="userId" value="7" />
+	</c:url>
 		
 		<p>
 			<a href="${cartellaPersonale}">Cartella Personale</a>

@@ -25,4 +25,11 @@ public class RecordDAOImpl implements RecordDAO {
 		return record;
 	}
 
+	@Override
+	public void saveRecord(Cartella cartella) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		// important so that hibernate doesn't create a new user when updating!
+		currentSession.saveOrUpdate(currentSession);
+	}
+
 }

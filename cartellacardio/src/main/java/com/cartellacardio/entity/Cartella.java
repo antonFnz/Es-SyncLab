@@ -10,7 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
+@DynamicUpdate
 @Table(name="cartella")
 public class Cartella {
 	
@@ -40,9 +43,11 @@ public class Cartella {
 	@Column(name="vita")
 	private int waist;
 	
-	@OneToOne(targetEntity=Medic.class, cascade=CascadeType.ALL)
-	@JoinColumn(name="medico_idmedico")
-	private Medic medic;
+	@Column(name="notaMedico")
+	private String medicNote;
+	
+	@Column(name="notaPaziente")
+	private String patientNote;
 	
 	@OneToOne(targetEntity=Patient.class, cascade=CascadeType.ALL)
 	@JoinColumn(name="paziente_idpaziente")
@@ -53,7 +58,7 @@ public class Cartella {
 	}
 
 	public Cartella(String anamnesis, String motive, float pressure, float heartRate, int weight, int height, int waist,
-			Medic medic, Patient patient) {
+			String medicNote, String patientNote, Medic medic, Patient patient) {
 		super();
 		this.anamnesis = anamnesis;
 		this.motive = motive;
@@ -62,7 +67,8 @@ public class Cartella {
 		this.weight = weight;
 		this.height = height;
 		this.waist = waist;
-		this.medic = medic;
+		this.medicNote = medicNote;
+		this.patientNote = patientNote;
 		this.patient = patient;
 	}
 
@@ -129,13 +135,21 @@ public class Cartella {
 	public void setWaist(int waist) {
 		this.waist = waist;
 	}
-
-	public Medic getMedic() {
-		return medic;
+	
+	public String getMedicNote() {
+		return medicNote;
 	}
 
-	public void setMedic(Medic medic) {
-		this.medic = medic;
+	public void setMedicNote(String medicNote) {
+		this.medicNote = medicNote;
+	}
+
+	public String getPatientNote() {
+		return patientNote;
+	}
+
+	public void setPatientNote(String patientNote) {
+		this.patientNote = patientNote;
 	}
 
 	public Patient getPatient() {
@@ -150,7 +164,7 @@ public class Cartella {
 	public String toString() {
 		return "Cartella [idcartella=" + idcartella + ", anamnesis=" + anamnesis + ", motive=" + motive + ", pressure="
 				+ pressure + ", heartRate=" + heartRate + ", weight=" + weight + ", height=" + height + ", waist="
-				+ waist + ", medic=" + medic + ", patient=" + patient + "]";
+				+ waist + ", medicNote=" + medicNote + ", patientNote=" + patientNote + ", patient=" + patient + "]";
 	}
 	
 }
