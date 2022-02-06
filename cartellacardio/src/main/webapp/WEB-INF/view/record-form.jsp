@@ -1,18 +1,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-	<title>Save New User</title>
+	<title>Modify Record</title>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add-style.css">
 </head>
 
 <body>
 
-	<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	<a href="${pageContext.request.contextPath}">
+		<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	</a>
 
 	<div id="wrapper">
 		<div id="header">
@@ -22,13 +25,15 @@
 	
 	<div id="container">
 		<h3>Modifica Cartella</h3>
-		<form:form action="addRecord" modelAttribute="records" method="POST">
+		<form:form action="save" modelAttribute="records" method="POST">
 		<!-- important to let the system know which record to update and not create a new one when updating -->
 		<form:hidden path="idcartella"/>
-		<form:hidden path="patientNote"/>
 			
 			<table>
 				<tbody>
+				
+					<security:authorize access="hasAuthority('MEDICO')">
+					
 					<tr>
 						<td><label>Motivo Visita:</label></td>
 						<td><form:input path="motive"/></td>
@@ -59,10 +64,16 @@
 						<td><form:textarea path="medicNote" rows="6" cols="33"/></td>
 					</tr>
 					
+					</security:authorize>
+					
+					<security:authorize access="hasAuthority('PAZIENTE')">
+					
 					<tr>
-						<td><label>Paziente:</label></td>
-						<td><form:input path="patient.id"/></td>
+						<td><label>Nota:</label></td>
+						<td><form:textarea path="patientNote" rows="6" cols="33"/></td>
 					</tr>
+					
+					</security:authorize>
 					
 					<tr>
 						<td><label></label></td>

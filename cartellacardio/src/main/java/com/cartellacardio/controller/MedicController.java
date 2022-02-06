@@ -39,6 +39,8 @@ public class MedicController {
 		int idUser = patient.getUser().getId();
 		List<Cartella> cartella = recordService.getRecords(idUser);
 		model.addAttribute("records", cartella);
+		double risk = cartella.get(0).calcRisk();
+		model.addAttribute("risk", risk);
 		return "cartella-view";
 	}
 	
@@ -52,10 +54,10 @@ public class MedicController {
 		return "record-form";
 	}
 	
-	@PostMapping("/addRecord")
+	@PostMapping("/save")
 	public String saveRecord(@ModelAttribute("records") Cartella cartella) {
 		recordService.saveRecord(cartella);
-		return "redirect:/medic/showPatientRecords";
+		return "redirect:/medic/list";
 	}
 
 }

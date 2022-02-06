@@ -10,6 +10,21 @@ table {
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
 	width:71%;
 }
+
+.greenText {
+	color: green;
+	font-weight: bold;
+}
+
+.yellowText {
+	color: yellow;
+	font-weight: bold;
+}
+
+.redText {
+	color: red;
+	font-weight: bold;
+}
  
 th {
 	border-bottom:1px solid gray;

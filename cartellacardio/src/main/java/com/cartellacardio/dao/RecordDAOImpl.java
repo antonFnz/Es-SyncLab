@@ -29,7 +29,22 @@ public class RecordDAOImpl implements RecordDAO {
 	public void saveRecord(Cartella cartella) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		// important so that hibernate doesn't create a new user when updating!
-		currentSession.saveOrUpdate(currentSession);
+		Cartella update = (Cartella) currentSession.get(Cartella.class, cartella.getIdcartella());
+		update.setIdcartella(cartella.getIdcartella());
+		update.setMotive(cartella.getMotive());
+		update.setAnamnesis(cartella.getAnamnesis());
+		update.setPressure(cartella.getPressure());
+		update.setHeartRate(cartella.getHeartRate());
+		update.setWaist(cartella.getWaist());
+		update.setMedicNote(cartella.getMedicNote());
+	}
+	
+	@Override
+	public void saveRecordPatient(Cartella cartella) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		// important so that hibernate doesn't create a new user when updating!
+		Cartella update = (Cartella) currentSession.get(Cartella.class, cartella.getIdcartella());
+		update.setPatientNote(cartella.getPatientNote());
 	}
 
 }

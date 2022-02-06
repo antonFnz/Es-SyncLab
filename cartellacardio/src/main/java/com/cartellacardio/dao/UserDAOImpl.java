@@ -36,6 +36,16 @@ public class UserDAOImpl implements UserDAO {
 		User user = currentSession.get(User.class, id);
 		return user;
 	}
+	
+	// get one user by its username
+	@Override
+	public User getUsers(String username) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<User> query = currentSession.createQuery("from User where username=:theUserName", User.class);
+		query.setParameter("theUserName", username);
+		List<User> userList = query.getResultList();
+		return userList.get(0);
+	}
 
 	@Override
 	public void addUser(User user) {

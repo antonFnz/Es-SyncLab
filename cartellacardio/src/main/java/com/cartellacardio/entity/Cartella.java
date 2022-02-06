@@ -1,5 +1,11 @@
 package com.cartellacardio.entity;
 
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,7 +65,6 @@ public class Cartella {
 
 	public Cartella(String anamnesis, String motive, float pressure, float heartRate, int weight, int height, int waist,
 			String medicNote, String patientNote, Medic medic, Patient patient) {
-		super();
 		this.anamnesis = anamnesis;
 		this.motive = motive;
 		this.pressure = pressure;
@@ -70,6 +75,26 @@ public class Cartella {
 		this.medicNote = medicNote;
 		this.patientNote = patientNote;
 		this.patient = patient;
+	}
+	
+	public int calcAge(Date dob) {
+		Instant instant = Instant.ofEpochMilli(dob.getTime());
+		LocalDate dateOfBirth = LocalDate.ofInstant(instant, ZoneId.systemDefault());;
+		LocalDate currDate = LocalDate.now();
+		return Period.between(dateOfBirth, currDate).getYears();
+	}
+	
+	public double calcRisk() {
+		double risk_factors =
+				(Math.log((double) this.calcAge(this.getPatient().getUser().getBirthDate())) * 3.06117) +
+				(Math.log((double) this.getPressure()) * 1.93303) +
+				(Math.log(200) * 1.12370) -
+				(Math.log(50) * 0.93263) +
+				- 23.9802;
+		if(this.patient.isSmoker()) { risk_factors+= 0.65451; }
+		if(this.patient.isDiabetic()) { risk_factors+= 0.57367; }
+		double risk = 100 * (1 - (Math.pow(0.88936, 1/Math.pow(2.71828, -risk_factors))));
+		return risk;
 	}
 
 	public int getIdcartella() {

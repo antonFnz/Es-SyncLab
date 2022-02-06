@@ -11,7 +11,9 @@
 
 <body>
 
-	<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	<a href="${pageContext.request.contextPath}">
+		<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	</a>
 	
 	<div id="wrapper">
 		<div id="header">

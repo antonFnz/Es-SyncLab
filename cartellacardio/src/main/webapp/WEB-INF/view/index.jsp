@@ -8,16 +8,23 @@
 <head>
 	<title>Home Page</title>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/tab_icon.png" />
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/images/tab_icon.png" />
 </head>
 
 <body>
 
-	<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	<a href="${pageContext.request.contextPath}">
+		<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	</a>
+	
 	<hr>
 	
 	<p>
 	Welcome to the Hospital Home Page.
 	</p>
+	
+	<security:authentication property="principal.username" var="username" />
 	
 	<p>
 		User: <security:authentication property="principal.username" />
@@ -57,7 +64,7 @@
 	<hr>
 	
 	<c:url var="cartellaPersonale" value="/patient/personal">
-			<c:param name="userId" value="7" />
+			<c:param name="userName" value="${username}" />
 	</c:url>
 		
 		<p>

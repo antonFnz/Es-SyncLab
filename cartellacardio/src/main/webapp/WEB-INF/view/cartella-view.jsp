@@ -1,19 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 
 <html>
 
 <head>
-	<title>Registered Users</title>
+	<title>Patient Record</title>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 
 <body>
-
-	<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	
+	<a href="${pageContext.request.contextPath}">
+		<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+	</a>
 
 	<div id="wrapper">
 		<div id="header">
@@ -52,6 +55,21 @@
 					<th>Nota (Paziente)</th>
 					<td> ${record.patientNote}</td>
 				</tr>
+				
+				<c:set var="rischio" value="${risk}" />
+				
+				<tr>
+					<th>Rischio Cardiovascolare:</th>
+					<td><c:choose>
+							<c:when test="${5 > risk}">
+								<a><span class="greenText"><fmt:formatNumber value="${risk}" pattern="0.00"/>% </span></a>
+							</c:when>
+							<c:when test="${5 < risk}">
+						 		<a><span class="redText"><fmt:formatNumber value="${risk}" pattern="0.00"/>% </span></a>
+						 	</c:when>
+						 </c:choose>
+					</td>
+				</tr>
 			</c:forEach>
 			</table>
 			
@@ -75,8 +93,16 @@
 	
 	<p>
 		<security:authorize access="hasAuthority('PAZIENTE')">
+		
+			<c:forEach var="record" items="${records}">
 			
-			Aggiungi Nota
+				<c:url var="updateLinkPatient" value="/patient/addNote">
+					<c:param name="userId" value="${record.patient.user.id}"/>
+				</c:url>
+			
+				<a href="${updateLinkPatient}">Aggiungi/Modifica Nota</a>
+			
+			</c:forEach>
 			
 			<hr>
 			

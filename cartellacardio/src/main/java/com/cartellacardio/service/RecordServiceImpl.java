@@ -27,4 +27,10 @@ public class RecordServiceImpl implements RecordService {
 		recordDAO.saveRecord(cartella);
 	}
 
+	@Override
+	@Transactional
+	public void saveRecordPatient(Cartella cartella) {
+		recordDAO.saveRecordPatient(cartella);
+	}
+
 }

@@ -9,5 +9,7 @@ public interface RecordDAO {
 	public List<Cartella> getRecords(int id);
 	
 	public void saveRecord(Cartella cartella);
+	
+	public void saveRecordPatient(Cartella cartella);
 
 }

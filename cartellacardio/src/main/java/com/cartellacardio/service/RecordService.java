@@ -9,5 +9,7 @@ public interface RecordService {
 	public List<Cartella> getRecords(int id);
 	
 	public void saveRecord(Cartella cartella);
+	
+	public void saveRecordPatient(Cartella cartella);
 
 }
