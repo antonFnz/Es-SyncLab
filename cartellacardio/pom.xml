@@ -21,9 +21,6 @@
   	
     <maven.compiler.source>13</maven.compiler.source>
     <maven.compiler.target>13</maven.compiler.target>
-    
-    <sonar.organization>antonfnz</sonar.organization>
-  	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <dependencies>
