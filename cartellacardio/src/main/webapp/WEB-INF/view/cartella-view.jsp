@@ -97,6 +97,12 @@
 			<br>
 			<hr>
 			
+			<c:forEach var="record" items="${records}">
+				<a href="${pageContext.request.contextPath}/download/${record.patient.id}.pdf">Download File</a>
+			</c:forEach>
+			
+			<hr>
+			
 		</security:authorize>
 	</p>
 	
